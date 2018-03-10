@@ -1,39 +1,20 @@
 <template>
-  <div class="holder">
-    <router-link
-      :to="{ name: 'description', params: { productId: 'some-text-id1' }}"
-    >
-      Mobile Phone1
-    </router-link>
-    <router-link
-      :to="{ name: 'description', params: { productId: 'some-text-id2' }}"
-    >
-      Mobile Phone2
-    </router-link>
-    <product-catalog-list></product-catalog-list>
+  <div>
+    <product-catalogue-item
+      v-for="product in list"
+      :key="product.id"
+      :product="product"
+    ></product-catalogue-item>
+
   </div>
 </template>
 
 <script>
-import ProductCatalogList from './ProductCatalogueList';
+import ProductCatalogueItem from './ProductCatalogueItem';
 
 export default {
   name: 'product-catalogue',
-  components: { ProductCatalogList },
-  mounted() {
-    fetch(this.apiUrl)
-      .then(response => response.json())
-      .then(productsData => productsData.products)
-      .then(products => products.map((el) => {
-        const { description, ...params } = el;
-        return params;
-      }));
-  },
+  props: ['list'],
+  components: { ProductCatalogueItem },
 };
 </script>
-
-<style scoped="">
-  .holder {
-    display: inline-block;
-  }
-</style>

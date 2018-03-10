@@ -12,9 +12,9 @@
 </template>
 
 <script>
-  export default {
-    name: 'product-card',
-  };
+export default {
+  name: 'product-card',
+};
 </script>
 
 <style scoped>

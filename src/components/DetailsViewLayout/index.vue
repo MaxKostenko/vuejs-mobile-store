@@ -21,9 +21,9 @@
 import ProductCard from '../ProductCard';
 
 export default {
-    name: 'details-view-layout',
-    components: { ProductCard }
-}
+  name: 'details-view-layout',
+  components: { ProductCard },
+};
 </script>
 
 <style scoped>

@@ -4,16 +4,21 @@
       <div class="img-holder">
         <div class="img"></div>
       </div>
-      <div class="title">Product Title</div>
-      <div class="price">1000</div>
-      <button class="button">Buy</button>
+      <div class="title">{{product.title}}</div>
+      <div class="price"><price-formatter>{{product.price}}</price-formatter></div>
+      <product-button :productId="product.id"><button class="button">Buy</button></product-button>
     </div>
   </div>
 </template>
 
 <script>
+import PriceFormatter from '@/components/base/PriceFormatter';
+import ProductButton from '@/components/ProductButton';
+
 export default {
   name: 'product-catalogue-item',
+  props: ['product'],
+  components: { PriceFormatter, ProductButton },
 };
 </script>
 
@@ -75,7 +80,7 @@ export default {
 
   .title {
     margin: 10px 0;
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
     text-align: center;
   }

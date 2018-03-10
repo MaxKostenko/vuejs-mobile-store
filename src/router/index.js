@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import ProductCatalogue from '../components/ProductCatalogue';
+import CatalogueView from '../views/CatalogueView';
 import ProductDescription from '../components/ProductDescription';
 import OrderCheckout from '../components/OrderView/OrderViewCheckout';
 import OrderConfirmation from '../components/OrderView/OrderViewConfirmation';
@@ -14,7 +14,7 @@ export default new Router({
     {
       path: '/',
       name: 'catalogue',
-      component: ProductCatalogue,
+      component: CatalogueView,
     }, {
       path: '/details/:productId',
       name: 'description',
