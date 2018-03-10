@@ -6,19 +6,28 @@
       </div>
       <div class="title">{{product.title}}</div>
       <div class="price"><price-formatter>{{product.price}}</price-formatter></div>
-      <product-button :productId="product.id"><button class="button">Buy</button></product-button>
+      <open-product-button
+        :productId="product.id"
+      >
+        <button class="button">More Info</button>
+      </open-product-button>
     </div>
   </div>
 </template>
 
 <script>
 import PriceFormatter from '@/components/base/PriceFormatter';
-import ProductButton from '@/components/ProductButton';
+import OpenProductButton from '@/components/Product/OpenProductButton';
 
 export default {
   name: 'product-catalogue-item',
-  props: ['product'],
-  components: { PriceFormatter, ProductButton },
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+  },
+  components: { PriceFormatter, OpenProductButton },
 };
 </script>
 

@@ -11,3 +11,12 @@ export function getProductList() {
     }, 400);
   });
 }
+
+export function getProduct(productId) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const product = productsList.products.find(el => el.id === productId);
+      resolve(product);
+    }, 400);
+  });
+}

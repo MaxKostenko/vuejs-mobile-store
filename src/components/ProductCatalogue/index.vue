@@ -14,7 +14,12 @@ import ProductCatalogueItem from './ProductCatalogueItem';
 
 export default {
   name: 'product-catalogue',
-  props: ['list'],
+  props: {
+    list: {
+      type: Array,
+      required: true,
+    },
+  },
   components: { ProductCatalogueItem },
 };
 </script>

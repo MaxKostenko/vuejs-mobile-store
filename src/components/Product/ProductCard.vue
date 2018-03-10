@@ -4,16 +4,35 @@
       <div class="img-holder">
         <div class="img"></div>
       </div>
-      <div class="title">Product Title</div>
-      <div class="price">1000</div>
-      <button class="button">Buy</button>
+      <div class="title">{{ product.title }}</div>
+      <div class="price"><price-formatter>{{product.price}}</price-formatter></div>
+      <buy-product-button
+        v-if="hasButton"
+        :productId="product.id"
+      >
+        <button class="button">Buy</button>
+      </buy-product-button>
     </div>
   </div>
 </template>
 
 <script>
+import PriceFormatter from '@/components/base/PriceFormatter';
+import BuyProductButton from '@/components/Product/BuyProductButton';
+
 export default {
   name: 'product-card',
+  props: {
+    product: {
+      type: Object,
+      required: true,
+    },
+    hasButton: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  components: { PriceFormatter, BuyProductButton },
 };
 </script>
 
@@ -39,7 +58,7 @@ export default {
 
   .title {
     margin: 10px 0;
-    font-size: x-large;
+    font-size: large;
     font-weight: bold;
     text-align: center;
   }

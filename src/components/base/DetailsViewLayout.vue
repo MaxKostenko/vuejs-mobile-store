@@ -1,28 +1,18 @@
-<template>
+<template functional>
   <div>
   <div class="holder">
     <div class="action-holder">
-      <product-card></product-card>
+      <slot name="actions"></slot>
     </div>
     <div class="details-holder">
-      some details<br/>
-      some details<br/>
-      some details<br/>
-      some details<br/>
-      some details<br/>
-      some details<br/>
-      some details<br/>
-      some details<br/>
+      <slot name="details"></slot>
     </div>
   </div></div>
 </template>
 
 <script>
-import ProductCard from '../ProductCard';
-
 export default {
   name: 'details-view-layout',
-  components: { ProductCard },
 };
 </script>
 
@@ -37,6 +27,7 @@ export default {
     border: 1px solid #AAA;
     margin-right: 280px;
     height: 100%;
+    padding: 20px;
   }
 
   .action-holder {
