@@ -1,6 +1,11 @@
 <template>
     <loader v-if="product===null"></loader>
-    <router-view v-else :product="product"></router-view>
+    <router-view
+      v-else
+      :product="product"
+      :personalDetails.sync="personalDetails"
+    >
+    </router-view>
 </template>
 
 <script>
@@ -19,6 +24,7 @@ export default {
   data() {
     return {
       product: null,
+      personalDetails: null,
     };
   },
 

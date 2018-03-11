@@ -87,6 +87,11 @@ export default {
   methods: {
     submitForm() {
       this.$v.$touch();
+      if (!this.$v.$invalid) {
+        this.$emit('saveForm', {
+          ...this.$data,
+        });
+      }
     },
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <details-view-layout>
     <product-card slot="actions" :product="product"></product-card>
-    <checkout-form slot="details"></checkout-form>
+    <checkout-form slot="details" @saveForm="saveFormEvent"></checkout-form>
   </details-view-layout>
 </template>
 
@@ -19,5 +19,11 @@ export default {
     },
   },
   components: { DetailsViewLayout, ProductCard, CheckoutForm },
+  methods: {
+    saveFormEvent(data) {
+      this.$emit('update:personalDetails', data);
+      this.$nextTick(() => this.$router.push({ name: 'confirmed' }));
+    },
+  },
 };
 </script>
