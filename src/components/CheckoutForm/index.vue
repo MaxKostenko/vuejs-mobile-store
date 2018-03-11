@@ -20,7 +20,11 @@
         :validator="$v.dateOfBirth"
         label="Date of birth"
       >
-        <input v-model="dateOfBirth" type="text">
+        <flat-pickr
+          v-model="dateOfBirth"
+          :config="dateOfBirthConfig"
+        >
+        </flat-pickr>
       </form-field-holder-vuelidate>
 
       <form-field-holder-vuelidate
@@ -34,7 +38,10 @@
         :validator="$v.deliveryDate"
         label="Preferred delivery date"
       >
-        <input v-model="deliveryDate" type="text">
+        <flat-pickr
+          v-model="deliveryDate"
+          :config="deliveryDateConfig"
+        ></flat-pickr>
       </form-field-holder-vuelidate>
 
       <div class="submit-holder">
@@ -49,6 +56,8 @@ import FormFieldHolder from '@/components/base/FormFieldHolder';
 import FormFieldHolderVuelidate from '@/components/base/FormFieldHolderVuelidate';
 import { validationMixin } from 'vuelidate';
 import { required, email } from 'vuelidate/lib/validators';
+import FlatPickr from 'vue-flatpickr-component';
+import 'flatpickr/dist/flatpickr.css';
 
 export default {
   mixins: [validationMixin],
@@ -83,6 +92,7 @@ export default {
   components: {
     FormFieldHolderVuelidate,
     FormFieldHolder,
+    FlatPickr,
   },
   methods: {
     submitForm() {
@@ -92,6 +102,22 @@ export default {
           ...this.$data,
         });
       }
+    },
+  },
+  computed: {
+    dateOfBirthConfig() {
+      const birthDateBefore = new Date();
+      birthDateBefore.setFullYear(birthDateBefore.getFullYear() - 16);
+      return {
+        maxDate: birthDateBefore,
+      };
+    },
+    deliveryDateConfig() {
+      const deliveryDateAfter = new Date();
+      deliveryDateAfter.setDate(deliveryDateAfter.getDate() + 4);
+      return {
+        minDate: deliveryDateAfter,
+      };
     },
   },
 };
