@@ -7,7 +7,7 @@
 
 <script>
 import ProductCatalogue from '@/components/ProductCatalogue';
-import Loader from '@/components/LoaderScreen';
+import Loader from '@/components/base/LoaderScreen';
 import * as api from '@/api/api';
 
 export default {

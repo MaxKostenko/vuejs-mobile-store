@@ -1,16 +1,14 @@
 <template>
-  <div class="holder">
-    <loader v-if="product===null"></loader>
-    <details-view-layout v-else>
-      <product-card slot="actions" :product="product" :has-button="true"></product-card>
-      <product-description slot="details" :product="product"></product-description>
-    </details-view-layout>
-  </div>
+  <loader v-if="product===null"></loader>
+  <details-view-layout v-else>
+    <product-card slot="actions" :product="product" :has-button="true"></product-card>
+    <product-description slot="details" :product="product"></product-description>
+  </details-view-layout>
 </template>
 
 <script>
 import DetailsViewLayout from '@/components/base/DetailsViewLayout';
-import Loader from '@/components/LoaderScreen';
+import Loader from '@/components/base/LoaderScreen';
 import ProductCard from '@/components/Product/ProductCard';
 import ProductDescription from '@/components/Product/ProductDescription';
 import * as api from '@/api/api';
@@ -24,6 +22,7 @@ export default {
       required: true,
     },
   },
+
   data() {
     return {
       product: null,

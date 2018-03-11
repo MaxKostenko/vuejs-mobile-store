@@ -2,9 +2,9 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import CatalogueView from '../views/CatalogueView';
 import ProductView from '../views/ProductView';
-import OrderCheckout from '../components/OrderView/OrderViewCheckout';
-import OrderConfirmation from '../components/OrderView/OrderViewConfirmation';
-import OrderView from '../components/OrderView';
+import OrderCheckout from '../views/OrderView/OrderViewCheckout';
+import OrderConfirmation from '../views/OrderView/OrderViewConfirmation';
+import OrderView from '../views/OrderView';
 
 Vue.use(Router);
 
