@@ -9,6 +9,7 @@
 import ProductCatalogue from '@/components/ProductCatalogue';
 import Loader from '@/components/base/LoaderScreen';
 import * as api from '@/api/api';
+import * as storage from '@/api/storage';
 
 export default {
   name: 'catalog-view',
@@ -21,7 +22,14 @@ export default {
   },
 
   mounted() {
-    api.getProductList().then((products) => { this.productList = products; });
+    storage.getData('productList')
+      .then((products) => { this.productList = products; })
+      .catch(() => {
+        api.getProductList().then((products) => {
+          this.productList = products;
+          storage.setData('productList', products);
+        });
+      });
   },
 };
 </script>

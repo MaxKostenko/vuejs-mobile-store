@@ -12,6 +12,7 @@ import Loader from '@/components/base/LoaderScreen';
 import ProductCard from '@/components/Product/ProductCard';
 import ProductDescription from '@/components/Product/ProductDescription';
 import * as api from '@/api/api';
+import * as storage from '@/api/storage';
 
 export default {
   name: 'product-view',
@@ -30,9 +31,13 @@ export default {
   },
 
   mounted() {
-    api.getProduct(this.productId).then((product) => {
-      this.product = product;
-    });
+    storage.getData('product')
+      .then((product) => { this.product = product; })
+      .catch(() => {
+        api.getProduct(this.productId).then((product) => {
+          this.product = product;
+        });
+      });
   },
 };
 </script>
