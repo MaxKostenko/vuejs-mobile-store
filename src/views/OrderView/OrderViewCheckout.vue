@@ -21,7 +21,7 @@ export default {
   components: { DetailsViewLayout, ProductCard, CheckoutForm },
   methods: {
     saveFormEvent(data) {
-      this.$emit('update:personalDetails', data);
+      this.$emit('updatePersonalDetails', data);
       this.$nextTick(() => this.$router.push({ name: 'confirmed' }));
     },
   },
